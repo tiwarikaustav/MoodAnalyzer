@@ -17,6 +17,16 @@ namespace MoodAnalyzer
         {
             this.moodMessage = message;
         }
+
+        /// <summary>
+        /// Analyzes the mood. This function analyze mood, return sad if string contains sad, else happy
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="MoodAnalyzerException">
+        /// Throws exception in the case of empty string: Mood should not be empty!
+        /// or
+        /// In case or null entry: Mood should not be null!
+        /// </exception>
         public string AnalyzeMood()
         {
             try

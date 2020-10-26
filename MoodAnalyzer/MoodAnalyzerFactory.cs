@@ -9,7 +9,7 @@ namespace MoodAnalyzer
     public class MoodAnalyzerFactory
     {
         // className will be in format of namespace.MyClass while constructor name will be MyClass
-        public static object CreateMoodAnalyzerObject(string className, string constructorName)
+        public static object CreateMoodAnalyzerObject(string className, string constructorName, string message)
         {
             string pattern = @"." + constructorName + "$";
             bool isMatch = Regex.IsMatch(className, pattern);
@@ -22,11 +22,15 @@ namespace MoodAnalyzer
                     var typeMoodAnalyzer = assembly.GetType(className);
                     //If no arguments are specified then the default constructor is invoked.
                     //Here we are passing type in arguments and no constructor name, so default constructor will be invoked
-                    return Activator.CreateInstance(typeMoodAnalyzer);
+                    if (message == null)
+                        return Activator.CreateInstance(typeMoodAnalyzer);
+                    else
+                        return Activator.CreateInstance(typeMoodAnalyzer, message);
 
                 }
+                // Catch block will execute when className is not valid
                 catch (ArgumentNullException)
-                { 
+                {
                     throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "No such class exist!");
                 }
             }
