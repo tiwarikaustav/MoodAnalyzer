@@ -4,16 +4,16 @@ using System.Text;
 
 namespace MoodAnalyzer
 {
-    class MoodAnalyzer
+    public class MoodAnalyzerClass
     {
         string moodMessage;
 
-        public MoodAnalyzer()
+        public MoodAnalyzerClass()
         {
             moodMessage = "";
         }
 
-        public MoodAnalyzer(string message)
+        public MoodAnalyzerClass(string message)
         {
             this.moodMessage = message;
         }
