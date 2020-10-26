@@ -4,12 +4,14 @@ using System.Text;
 
 namespace MoodAnalyzer
 {
-    class MoodAnalyzerException:Exception
+    public class MoodAnalyzerException:Exception
     {
         public enum ExceptionType
         {
             EMPTY,
-            NULL
+            NULL,
+            NO_SUCH_METHOD,
+            NO_SUCH_CLASS
         }
 
         private ExceptionType type;

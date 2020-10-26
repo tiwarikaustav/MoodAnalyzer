@@ -8,7 +8,8 @@ namespace MoodAnalyzer
         {
             try
             {
-                MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass("");
+                ///using Reflection to create instance of MoodAnalyzer
+                MoodAnalyzerClass moodAnalyzer = (MoodAnalyzerClass)MoodAnalyzerFactory.CreateMoodAnalyzerObject("MoodAnalyzerProblem.MoodAnalyzerClass", "MoodAnalyzerClass");
                 Console.WriteLine("Mood is: {0}", moodAnalyzer.AnalyzeMood());
             }
             catch(MoodAnalyzerException e)
