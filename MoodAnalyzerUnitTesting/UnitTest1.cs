@@ -6,19 +6,38 @@ namespace MoodAnalyzerUnitTesting
     [TestClass]
     public class MoodAnalyzerUnitTesting
     {
-        private MoodAnalyzer moodAnalyzer = null;
+        private MoodAnalyzerClass moodAnalyzer = null;
 
         [TestInitialize]
-        public void InitialSetup()
+        public void initialSetup()
         {
-            moodAnalyzer = new MoodAnalyzer("sad");
+            moodAnalyzer = new MoodAnalyzerClass("sad");
         }
 
         [TestMethod]
         [DataRow("I am in sad mood")]
-        public void GivenSad_ReturnSad(string message)
+        public void GivenSadReturnSad(string message)
         {
+            //Arrange
+            moodAnalyzer = new MoodAnalyzerClass(message);
+            //Act
+            string shouldBe = "sad";
+            string actual = moodAnalyzer.AnalyzeMood();
+            //Assert
+            Assert.AreEqual(shouldBe, actual, false);
+        }
 
+        [TestMethod]
+        [DataRow("I am in any mood")]
+        public void GivenAnyMoodReturnHappy(string message)
+        {
+            //Arrange
+            moodAnalyzer = new MoodAnalyzerClass(message);
+            //Act
+            string shouldBe = "happy";
+            string actual = moodAnalyzer.AnalyzeMood();
+            //Assert
+            Assert.AreEqual(shouldBe, actual, true);
         }
     }
 }
