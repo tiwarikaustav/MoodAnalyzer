@@ -6,52 +6,51 @@ namespace MoodAnalyzerUnitTesting
     [TestClass]
     public class MoodAnalyzerUnitTesting
     {
-
-        private MoodAnalyzer moodAnalyzer = null;
+        private MoodAnalyzerClass moodAnalyzer = null;
 
         [TestInitialize]
-        public void InitialSetup()
+        public void initialSetup()
         {
-            moodAnalyzer = new MoodAnalyzer("sad");
+            moodAnalyzer = new MoodAnalyzerClass("sad");
         }
 
         [TestMethod]
         [DataRow("I am in sad mood")]
-        public void GivenSad_ReturnSad(string message)
+        public void GivenSadReturnSad(string message)
         {
             //Arrange
-            moodAnalyzer = new MoodAnalyzer(message);
+            moodAnalyzer = new MoodAnalyzerClass(message);
             //Act
+            string shouldBe = "sad";
             string actual = moodAnalyzer.AnalyzeMood();
-            string expected = "SAD";
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(shouldBe, actual, true);
         }
 
         [TestMethod]
         [DataRow("I am in any mood")]
-        public void GivenAnyMood_ReturnHappy(string message)
+        public void GivenAnyMoodReturnHappy(string message)
         {
             //Arrange
-            moodAnalyzer = new MoodAnalyzer(message);
+            moodAnalyzer = new MoodAnalyzerClass(message);
             //Act
+            string shouldBe = "happy";
             string actual = moodAnalyzer.AnalyzeMood();
-            string expected = "HAPPY";
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(shouldBe, actual, true);
         }
 
         [TestMethod]
         [DataRow(null)]
-        public void GivenNull_HandleException(string message)
+        public void GivenNullString(string message)
         {
             //Arrange
-            moodAnalyzer = new MoodAnalyzer(message);
+            moodAnalyzer = new MoodAnalyzerClass(message);
             //Act
+            string shouldBe = "happy";
             string actual = moodAnalyzer.AnalyzeMood();
-            string expected = "HAPPY";
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(shouldBe, actual, true);
         }
     }
 }
