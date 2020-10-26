@@ -6,8 +6,15 @@ namespace MoodAnalyzer
     {
         static void Main(string[] args)
         {
-            MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass();
-            Console.WriteLine("Mood is: {0}", moodAnalyzer.AnalyzeMood());
+            try
+            {
+                MoodAnalyzerClass moodAnalyzer = new MoodAnalyzerClass("");
+                Console.WriteLine("Mood is: {0}", moodAnalyzer.AnalyzeMood());
+            }
+            catch(MoodAnalyzerException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

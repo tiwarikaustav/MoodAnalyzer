@@ -44,13 +44,38 @@ namespace MoodAnalyzerUnitTesting
         [DataRow(null)]
         public void GivenNullString(string message)
         {
-            //Arrange
-            moodAnalyzer = new MoodAnalyzerClass(message);
-            //Act
-            string shouldBe = "happy";
-            string actual = moodAnalyzer.AnalyzeMood();
-            //Assert
-            Assert.AreEqual(shouldBe, actual, true);
+            try
+            {
+                //Arrange
+                moodAnalyzer = new MoodAnalyzerClass(message);
+            }
+            catch(MoodAnalyzerException e)
+            {
+                //Act
+                string shouldBe = "Mood should not be null!";
+                string actual = moodAnalyzer.AnalyzeMood();
+                //Assert
+                Assert.AreEqual(shouldBe, actual, true);
+            }
+        }
+
+        [TestMethod]
+        [DataRow("")]
+        public void GivenEmptyString(string message)
+        {
+            try
+            {
+                //Arrange
+                moodAnalyzer = new MoodAnalyzerClass(message);
+            }
+            catch (MoodAnalyzerException e)
+            {
+                //Act
+                string shouldBe = "Mood should not be empty!";
+                string actual = moodAnalyzer.AnalyzeMood();
+                //Assert
+                Assert.AreEqual(shouldBe, actual, true);
+            }
         }
     }
 }
